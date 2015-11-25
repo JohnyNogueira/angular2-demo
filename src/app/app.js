@@ -13,11 +13,23 @@ var AppComponent = (function () {
         this.title = 'My Angular2 App';
         this.day = '24/11/2015';
         this.lol = 'loooooooooooooooooooool';
+        this.nameChanged = new angular2_1.EventEmitter();
     }
+    Object.defineProperty(AppComponent.prototype, "nameModel", {
+        get: function () {
+            return this.name;
+        },
+        set: function (value) {
+            this.nameChanged.next(value);
+        },
+        enumerable: true,
+        configurable: true
+    });
     AppComponent = __decorate([
         angular2_1.Component({
             selector: 'my-app',
-            template: "\n        <h1>{{title}}</h1>\n        <h2>today is {{day}}</h2>   \n        <p>{{lol}}</p>     \n        "
+            template: "\n        <h1>{{title}}</h1>\n        <h2>today is {{day}}</h2>   \n        <p>{{lol}}</p>     \n        <input id=\"name\" [(ng-model)]=\"nameModel\"/> {{nameModel}}\n        ",
+            directives: [angular2_1.FORM_DIRECTIVES]
         }), 
         __metadata('design:paramtypes', [])
     ], AppComponent);
